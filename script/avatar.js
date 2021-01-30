@@ -1,4 +1,4 @@
-setAvatar = ({health, mind, sleep}) => {
+getAvatarName = ({health, mind, sleep}) => {
   let middle = false;
   let dying = false;
   let bad = false;
