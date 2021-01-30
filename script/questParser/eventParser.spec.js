@@ -9,7 +9,7 @@ const mockEvent = [
 ];
 
 describe('eventParser', () => {
-    describe('parseEvent helper', () => {
+    describe('🐙 parseEvent helper', () => {
         it('should extract caption from item', () =>{
             const { caption } = parseEvent(mockEvent);
 
@@ -51,7 +51,7 @@ describe('eventParser', () => {
         });
     });
 
-    describe('extractOptions helper', () => {
+    describe('🐙 extractOptions helper', () => {
         it('should broke, if not %3 items', () => {
             expect(() => extractOptions(['1', '2'])).toThrow();
             expect(() => extractOptions(['1'])).toThrow();
