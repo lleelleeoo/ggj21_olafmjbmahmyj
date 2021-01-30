@@ -5,10 +5,10 @@ const situation = document.getElementById('situation');
 const option1 = document.getElementById('option1');
 const option2 = document.getElementById('option2');
 const option3 = document.getElementById('option3');
-const health = document.getElementById('health');
-const sleep = document.getElementById('sleep');
-const bullets = document.getElementById('bullets');
-const mind = document.getElementById('mind');
+const healthLabel = document.getElementById('health');
+const sleepLabel = document.getElementById('sleep');
+const bulletsLabel = document.getElementById('bullets');
+const mindLabel = document.getElementById('mind');
 
 let textRow = 1;
 
@@ -17,12 +17,6 @@ const state = {
   mind: 100,
   sleep: 100,
   bullets: 6,
-}
-
-const displayState = {
-  1: 'норм',
-  2: 'не норм',
-  3: 'плохо',
 }
 
 let healthState = displayState[1];
@@ -34,6 +28,13 @@ situation.textContent = Quest[textRow][0];
 for (let i = 1; i < 4; i++) {
   let optionPlace = i + 1;
   document.getElementById(`option${i}`).textContent = Quest[textRow][optionPlace];
+}
+
+function setStateToView({health, mind, sleep}, bullets){
+  healthLabel.textContent = health;
+  mindLabel.textContent = mind;
+  sleepLabel.textContent = sleep;
+  bulletsLabel.textContent = bullets;
 }
 
 
