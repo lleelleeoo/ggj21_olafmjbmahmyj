@@ -82,12 +82,6 @@ getAvatarName = ({health, mind, sleep}) => {
 
 }
 
-let ururu = {
-  health: 60,
-  mind: 87,
-  sleep: 87,
-}
-
 // 100-80 хорошо
 // 80-50 средне
 // 50-1 плохо
