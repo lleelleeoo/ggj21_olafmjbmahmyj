@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+}
+
+.playing-field {
+  min-width: 1000px;
+  height:  680px;
+  border: 3px solid black;
+  display: flex;
+  margin: 10px auto;
+  padding: 10px;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.situation-field {
+  width: 83%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.situation-block {
+  border: 3px solid black;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.options-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border: 3px solid black;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.option:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.condition-field {
+  width: calc(17% - 10px);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 3px solid black;
+}
+
+.character-image {
+  height: 200px;
+  width: 100%;
+  border-radius: 15px;
+  background-color:rgba(0, 0, 0, 0.8);
+}
+
+.condition-box {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.condition-name {
+  min-width: 70px;
+  display: inline-block;
+}
+
+
+.condition-state {
+  color: green;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.bullets {
+  color: black;
+}
+
+.things-box {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.things-line {
+  margin-top: 10px;
+}
+
+.things-line span {
+  text-transform: uppercase;
+}
