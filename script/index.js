@@ -13,15 +13,22 @@ const mind = document.getElementById('mind');
 let textRow = 1;
 
 const state = {
+  health: 100,
+  mind: 100,
+  sleep: 100,
+  bullets: 6,
+}
+
+const displayState = {
   1: 'норм',
   2: 'не норм',
   3: 'плохо',
 }
 
-let healthState = state[1];
-let mindState = state[1];
-let sleepState = state[1];
-let bulletState = 6;
+let healthState = displayState[1];
+let mindState = displayState[1];
+let sleepState = displayState[1];
+let bulletsState = 6;
 
 situation.textContent = Quest[textRow][0];
 for (let i = 1; i < 4; i++) {
