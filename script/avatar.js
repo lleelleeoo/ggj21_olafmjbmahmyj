@@ -31,11 +31,11 @@ getAvatarName = ({health, mind, sleep}) => {
   } else if (sleep < 50 && sleep > 0) {
     bad = 'sleep';
   } else if (mind < 50 && mind > 0) {
-    if (mind < sleep) {
+    if (mind <= sleep) {
       bad = 'mind';
     }
   } else if (health < 50 && health >= 00) {
-    if (health < mind && health < sleep) {
+    if (health <= mind && health <= sleep) {
       bad = 'health';
     }
   }
@@ -57,11 +57,11 @@ getAvatarName = ({health, mind, sleep}) => {
   } else if (sleep < 80 && sleep >= 50) {
     middle = 'sleep';
   } else if (mind < 80 && mind >= 50) {
-    if (mind < sleep) {
+    if (mind <= sleep) {
       middle = 'mind';
     }
   } else if (health < 80 && health >= 50) {
-    if (health < mind && health < sleep) {
+    if (health <= mind && health <= sleep) {
       middle = 'health';
     }
   }
