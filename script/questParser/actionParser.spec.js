@@ -47,6 +47,7 @@ describe('actionParser', () => {
             ${ '12@sleep+10@sleep+23' }  | ${ 12 }      | ${{ sleep: 33 }}| ${{}}
             ${ '12@sleep+10@sleep-23' }  | ${ 12 }      | ${{ sleep: 10 }}| ${{ sleep: 23 }}
             ${ '42@mind+10@bullets-1' }  | ${ 42 }      | ${{ mind: 10 }}| ${{ bullets: 1 }}
+            ${ '42@bullets-1@bullets-2' }  | ${ 42 }      | ${{}}| ${{ bullets: 3 }}
         `('🐙 actionParser get $actions, returns $nextEvent, $add and $remove', ({ actions, nextEvent, add, remove}) => {
             expect(actionParser(actions)).toEqual({nextEvent, add, remove})
         })
