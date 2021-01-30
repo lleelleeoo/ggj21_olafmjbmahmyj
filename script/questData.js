@@ -1,5 +1,4 @@
-const questData = `
-,,A,B,C
+const questData = `,,A,B,C
 "Джон Брэдфорд Макертон проснулся. Пробуждение ото сна было резким и неприятным, словно его выхватили из уютной тёплой мягкой кровати и выставили на холод улицы. 
 По спине будто бы пробежал разряд.",,Продолжить спать,Попытаться вспомнить где вы и что происходит,Осмотреться 
 ,,,,
@@ -13,7 +12,9 @@ const questData = `
 
 const {data, errors, meta} = Papa.parse(questData);
 
-console.info(meta);
+info(meta);
+log(data);
+
 if(errors.length) {
     throw errors;
 }
