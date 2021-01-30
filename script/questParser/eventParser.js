@@ -28,6 +28,8 @@ const extractOptions = (input) => {
 }
 
 // for tests
-module.exports = {
-    parseEvent, extractOptions
-}
+try {
+    module.exports = {
+        parseEvent, extractOptions
+    }
+} catch {}
