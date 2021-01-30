@@ -29,11 +29,26 @@ describe('actionParser', () => {
         });
 
         it('should parse remove action', () => {
-            expect(actionParser('23@health-25')).toHaveProperty('remove', { health: -25 })
+            expect(actionParser('23@health-25')).toHaveProperty('remove', { health: 25 })
         });
 
         it('should throw error, if state is unknown', () => {
             expect(() => actionParser('23@pew+146')).toThrow();
         });
+    });
+
+    describe('actionParser helper carpet testing', () => {
+        it.each`
+            actions    | nextEvent    | add  | remove
+            ${ '12' }  | ${ 12 }      | ${{}}| ${{}}
+            ${ '12@sleep+10' }  | ${ 12 }      | ${{ sleep: 10 }}| ${{}}
+            ${ '12@sleep+10@health+12' }  | ${ 12 }      | ${{ sleep: 10, health: 12 }}| ${{}}
+            ${ '12@sleep+10@health-23' }  | ${ 12 }      | ${{ sleep: 10 }}| ${{ health: 23 }}
+            ${ '12@sleep+10@sleep+23' }  | ${ 12 }      | ${{ sleep: 33 }}| ${{}}
+            ${ '12@sleep+10@sleep-23' }  | ${ 12 }      | ${{ sleep: 10 }}| ${{ sleep: 23 }}
+            ${ '42@mind+10@bullets-1' }  | ${ 42 }      | ${{ mind: 10 }}| ${{ bullets: 1 }}
+        `('🐙 actionParser get $actions, returns $nextEvent, $add and $remove', ({ actions, nextEvent, add, remove}) => {
+            expect(actionParser(actions)).toEqual({nextEvent, add, remove})
+        })
     });
 });

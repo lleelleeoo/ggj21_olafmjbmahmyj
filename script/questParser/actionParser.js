@@ -22,7 +22,7 @@ actionParser = (actionString) => {
         if (sign === '+') {
             add[state] ? add[state] += value : add[state] = value;
         } else if (sign === '-') {
-            remove[state] ? remove[state] -= value : remove[state] = -value;
+            remove[state] ? remove[state] -= value : remove[state] = value;
         } else {
             throw new Error(`invalid action '${action}' in '${actionString}'`);
         }
