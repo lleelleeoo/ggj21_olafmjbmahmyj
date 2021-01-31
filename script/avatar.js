@@ -3,6 +3,21 @@ getAvatarName = ({health, mind, sleep}) => {
   let dying = false;
   let bad = false;
 
+  const characterPictures = {
+    'died of insomnia': 'SPOILER_3.jpg',
+    'gone crazy': 'SPOILER_4.jpg',
+    'lost consciousness': 'SPOILER_2.jpg',
+    'everything is bad': '6.jpg',
+    'you have bad sleep': 'SPOILER_9.jpg',
+    'you have bad mind': 'SPOILER_10.jpg',
+    'you have bad health': '7.jpg',
+    'everything is so so': 'SPOILER_5.jpg',
+    'your sleep is so so': 'SPOILER_12.jpg',
+    'your mind is so so': 'SPOILER_13.jpg',
+    'your health is so so': 'SPOILER_11.jpg',
+    'norm': 'SPOILER_1.jpg',
+  }
+
 
   if (sleep <= 0) {
     dying = 'sleep';
@@ -18,11 +33,11 @@ getAvatarName = ({health, mind, sleep}) => {
 
   if(dying) {
     if (dying == 'sleep') {
-      return 'died of insomnia';
+      return characterPictures['died of insomnia'];
     } else if (dying == 'mind') {
-      return 'gone crazy';
+      return characterPictures['gone crazy'];
     } else if (dying == 'health') {
-      return 'lost consciousness';
+      return characterPictures['lost consciousness'];
     }
   }
 
@@ -42,13 +57,13 @@ getAvatarName = ({health, mind, sleep}) => {
 
   if(bad) {
     if (bad == 'everything') {
-      return 'everything is bad';
+      return characterPictures['everything is bad'];
     } else if (bad == 'sleep') {
-      return 'you have bad sleep';
+      return characterPictures['you have bad sleep'];
     } else if (bad == 'mind') {
-      return 'you have bad mind';
+      return characterPictures['you have bad mind'];
     } else if (bad == 'health') {
-      return 'you have bad health';
+      return characterPictures['you have bad health'];
     }
   }
 
@@ -68,17 +83,17 @@ getAvatarName = ({health, mind, sleep}) => {
 
   if(middle) {
     if (middle == 'everything') {
-      return 'everything is so so';
+      return characterPictures['everything is so so'];
     } else if (middle == 'sleep') {
-      return 'your sleep is so so';
+      return characterPictures['your sleep is so so'];
     } else if (middle == 'mind') {
-      return 'your mind is so so';
+      return characterPictures['your mind is so so'];
     } else if (middle == 'health') {
-      return 'your health is so so';
+      return characterPictures['your health is so so'];
     }
   }
 
-  return 'norm';
+  return characterPictures['norm'];
 
 }
 
