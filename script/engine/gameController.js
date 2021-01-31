@@ -17,7 +17,7 @@ const init = () => {
 
 getCurrentState = () => state;
 getEventCaption = () => event.caption;
-getOptions = () => event.options;
+getOptions = () => event.options.map(({caption, action}) => ({caption, action}));
 getPicture = () => event.picture;
 
 const updateCurrentState = ({ health, mind, sleep, bullets }) => {
