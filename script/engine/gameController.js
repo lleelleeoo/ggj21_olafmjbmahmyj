@@ -1,4 +1,4 @@
-const initStrate = {
+const initState = {
     health: 100,
     mind: 100,
     sleep: 100,
@@ -6,12 +6,19 @@ const initStrate = {
 };
 
 let state;
+let eventId;
+let event;
 
 const init = () => {
-    state = {...initStrate};
+    eventId = 0;
+    state = {...initState};
+    event = parseEvent(Quest[eventId]);
 }
 
 getCurrentState = () => state;
+getEventCaption = () => event.caption;
+getOptions = () => event.options;
+getPicture = () => event.picture;
 
 const updateCurrentState = ({ health, mind, sleep, bullets }) => {
     if (health !== undefined) state.health = health;
