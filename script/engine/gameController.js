@@ -5,6 +5,8 @@ const initState = {
     bullets: 6,
 };
 
+const LOST_EVENT = 'lostEvent';
+
 let state;
 let eventId;
 let event;
@@ -20,7 +22,18 @@ getOptions = () => event.options.map(({caption, action}) => ({caption, action}))
 getPicture = () => event.picture;
 
 const processAction = (actionString) => {
-    const { nextEvent, add, remove } = actionParser(actionString);
+    let parsedAction;
+    try {
+        parsedAction = actionParser(actionString);
+    } catch (e) {
+        parsedAction = {
+            nextEvent: LOST_EVENT,
+            add: {},
+            remove: {}
+        }
+        setTimeout(() => {throw e});
+    }
+    const { nextEvent, add, remove } = parsedAction;
     const nextState = { ...state };
 
     for (item in add) {
@@ -38,6 +51,17 @@ const processAction = (actionString) => {
 };
 
 const updateCurrentEvent = (nextId) => {
+    if (nextId === LOST_EVENT) {
+        eventId = nextId;
+        event = {
+            caption: 'Этот сценарий ещё не приснился сценаристу',
+            options: [],
+            picture: `${LOST_EVENT}.jpg`
+        }
+
+        return;
+    }
+
     eventId = nextId - 1;
     event = parseEvent(Quest[eventId]);
 }
