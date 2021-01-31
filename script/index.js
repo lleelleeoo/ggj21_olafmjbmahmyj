@@ -1,5 +1,7 @@
 // 1920*1080
 
+init();
+
 // const bag = document.getElementById('');
 const situation = document.getElementById('situation');
 const option1 = document.getElementById('option1');
@@ -12,25 +14,35 @@ const mindLabel = document.getElementById('mind');
 
 let textRow = 1;
 
-const state = {
-  health: 100,
-  mind: 100,
-  sleep: 100,
-  bullets: 6,
-}
+situation.textContent = getEventCaption();
 
-situation.textContent = Quest[textRow][0];
-for (let i = 1; i < 4; i++) {
-  let optionPlace = i + 1;
-  document.getElementById(`option${i}`).textContent = Quest[textRow][optionPlace];
-}
-
-function setStateToView({health, mind, sleep}, bullets){
+function setStateToView({health, mind, sleep, bullets}){
   healthLabel.textContent = health;
   mindLabel.textContent = mind;
   sleepLabel.textContent = sleep;
   bulletsLabel.textContent = bullets;
 }
+
+setStateToView(getStateToView(getCurrentState()));
+
+getOptions().forEach(element => {
+  let index = getOptions().indexOf(element);
+  document.getElementById(`option${index+1}`).textContent = element.caption;
+});
+
+function setEverything() {
+  situation.textContent = getEventCaption();
+  setStateToView(getStateToView(getCurrentState()));
+  getOptions().forEach(element => {
+    let index = getOptions().indexOf(element);
+    document.getElementById(`option${index+1}`).textContent = element.caption;
+  });
+}
+
+
+
+console.log(getEventCaption());
+console.log(getPicture());
 
 
 
