@@ -11,6 +11,8 @@ const healthLabel = document.getElementById('health');
 const sleepLabel = document.getElementById('sleep');
 const bulletsLabel = document.getElementById('bullets');
 const mindLabel = document.getElementById('mind');
+const mainImage = document.querySelector('.main-image');
+const optionsBlock = document.querySelector('.options-block');
 
 let textRow = 1;
 
@@ -25,24 +27,33 @@ function setStateToView({health, mind, sleep, bullets}){
 
 setStateToView(getStateToView(getCurrentState()));
 
-getOptions().forEach(element => {
-  let index = getOptions().indexOf(element);
-  document.getElementById(`option${index+1}`).textContent = element.caption;
+mainImage.src = `./img/${getPicture()}`;
+
+getOptions().forEach((element, id) => {
+  document.getElementById(`option${id+1}`).textContent = element.caption;
+  document.querySelector(`.o${id+1}`).onclick = () => {
+    processAction(element.action);
+    setEverything();
+  }
+  console.log(element);
 });
 
 function setEverything() {
   situation.textContent = getEventCaption();
   setStateToView(getStateToView(getCurrentState()));
-  getOptions().forEach(element => {
-    let index = getOptions().indexOf(element);
-    document.getElementById(`option${index+1}`).textContent = element.caption;
+  getOptions().forEach((element, id) => {
+    document.getElementById(`option${id+1}`).textContent = element.caption;
+    document.querySelector(`.o${id+1}`).onclick = () => {
+      processAction(element.action);
+      setEverything();
+    }
   });
+  mainImage.src = `./img/${getPicture()}`;
 }
 
 
-
 console.log(getEventCaption());
-console.log(getPicture());
+// console.log(processAction());
 
 
 
