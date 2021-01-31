@@ -1,8 +1,9 @@
-getStateToView = ({health, mind, sleep}) => {
+getStateToView = ({health, mind, sleep, bullets}) => {
   let statesToView = {
     health: 'норм',
     sleep: 'норм',
     mind: 'норм',
+    bullets: bullets,
   }
 
   if(health >= 80) {
