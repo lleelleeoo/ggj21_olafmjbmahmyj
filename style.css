@@ -1,7 +1,14 @@
-
+@font-face {
+  font-family: HelveticaNeueCyr-Roman; /* Имя шрифта */
+  src: url(fonts/helveticaneuecyr-roman.woff); /* Путь к файлу со шрифтом */
+ }
 
 * {
   margin: 0;
+}
+
+body {
+  background-color: black;
 }
 
 .playing-field {
@@ -14,6 +21,7 @@
   padding: 10px;
   box-sizing: border-box;
   justify-content: space-between;
+  background-color: grey;
 }
 
 .situation-field {
