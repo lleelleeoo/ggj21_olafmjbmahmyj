@@ -29,35 +29,31 @@ setStateToView(getStateToView(getCurrentState()));
 
 mainImage.src = `./img/${getPicture()}`;
 
-getOptions().forEach(element => {
-  let index = getOptions().indexOf(element);
-  document.getElementById(`option${index+1}`).textContent = element.caption;
+getOptions().forEach((element, id) => {
+  document.getElementById(`option${id+1}`).textContent = element.caption;
+  document.querySelector(`.o${id+1}`).onclick = () => {
+    processAction(element.action);
+    setEverything();
+  }
+  console.log(element);
 });
 
 function setEverything() {
   situation.textContent = getEventCaption();
   setStateToView(getStateToView(getCurrentState()));
-  getOptions().forEach(element => {
-    let index = getOptions().indexOf(element);
-    document.getElementById(`option${index+1}`).textContent = element.caption;
+  getOptions().forEach((element, id) => {
+    document.getElementById(`option${id+1}`).textContent = element.caption;
+    document.querySelector(`.o${id+1}`).onclick = () => {
+      processAction(element.action);
+      setEverything();
+    }
   });
   mainImage.src = `./img/${getPicture()}`;
 }
 
-optionsBlock.addEventListener('click', (e) => {
-  if (e.target == option1 || e.target == document.querySelector('.o1')) {
-    console.log('a');
-  } else if (e.target == option2 || e.target == document.querySelector('.o2')) {
-    console.log('b');
-  } else if (e.target == option3 || e.target == document.querySelector('.o3')) {
-    console.log('c');
-  }
-})
-
-
 
 console.log(getEventCaption());
-console.log(getPicture());
+// console.log(processAction());
 
 
 
