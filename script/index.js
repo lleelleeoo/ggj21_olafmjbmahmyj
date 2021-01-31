@@ -19,11 +19,6 @@ const state = {
   bullets: 6,
 }
 
-let healthState = displayState[1];
-let mindState = displayState[1];
-let sleepState = displayState[1];
-let bulletsState = 6;
-
 situation.textContent = Quest[textRow][0];
 for (let i = 1; i < 4; i++) {
   let optionPlace = i + 1;
