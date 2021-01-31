@@ -5,6 +5,7 @@
 
 * {
   margin: 0;
+  font-family: HelveticaNeueCyr-Roman;
 }
 
 body {
@@ -14,14 +15,21 @@ body {
 .playing-field {
   min-width: 1240px;
   max-width: 1240px;
-  height:  680px;
-  border: 3px solid black;
+  min-height:  630px;
+  max-height: 750px;
+  border: 2px solid black;
   display: flex;
   margin: 10px auto;
   padding: 10px;
   box-sizing: border-box;
   justify-content: space-between;
   background-color: grey;
+}
+
+.main-image {
+  margin: 0 auto 10px;
+  border-radius: 10px;
+  display: block;
 }
 
 .situation-field {
@@ -32,11 +40,22 @@ body {
 }
 
 .situation-block {
-  border: 3px solid black;
+  border: 2px solid black;
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
+  font-size: 20px;
+  background-color:#E2E2E2;
+  border-radius: 10px;
+  font-weight: bold;
+  max-height: 89px;
+  min-height: 89px;
+  overflow-y: scroll;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
 }
+
+.situation-block::-webkit-scrollbar { width: 0; }
 
 .options-block {
   display: flex;
@@ -47,9 +66,12 @@ body {
   width: 100%;
   padding: 10px;
   cursor: pointer;
-  border: 3px solid black;
+  border: 2px solid black;
   box-sizing: border-box;
   margin-top: 10px;
+  background-color: #E2E2E2;
+  display: flex;
+  justify-content: center;
 }
 
 .option:hover {
@@ -62,7 +84,9 @@ body {
   flex-direction: column;
   padding: 10px;
   box-sizing: border-box;
-  border: 3px solid black;
+  border: 2px solid black;
+  background-color: #E2E2E2;
+  border-radius: 15px;
 }
 
 .character-image {
@@ -70,6 +94,9 @@ body {
   width: 100%;
   border-radius: 15px;
   background-color:rgba(0, 0, 0, 0.8);
+  background-image: url('./img/SPOILER_1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .condition-box {
@@ -79,8 +106,9 @@ body {
 }
 
 .condition-name {
-  min-width: 70px;
+  min-width: 85px;
   display: inline-block;
+  font-size: 14px;
 }
 
 
@@ -88,10 +116,16 @@ body {
   color: green;
   text-transform: uppercase;
   display: inline-block;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .bullets {
   color: black;
+}
+
+.things {
+  font-size: 14px;
 }
 
 .things-box {
