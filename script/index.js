@@ -11,6 +11,8 @@ const healthLabel = document.getElementById('health');
 const sleepLabel = document.getElementById('sleep');
 const bulletsLabel = document.getElementById('bullets');
 const mindLabel = document.getElementById('mind');
+const mainImage = document.querySelector('.main-image');
+const optionsBlock = document.querySelector('.options-block');
 
 let textRow = 1;
 
@@ -25,6 +27,8 @@ function setStateToView({health, mind, sleep, bullets}){
 
 setStateToView(getStateToView(getCurrentState()));
 
+mainImage.src = `./img/${getPicture()}`;
+
 getOptions().forEach(element => {
   let index = getOptions().indexOf(element);
   document.getElementById(`option${index+1}`).textContent = element.caption;
@@ -37,7 +41,18 @@ function setEverything() {
     let index = getOptions().indexOf(element);
     document.getElementById(`option${index+1}`).textContent = element.caption;
   });
+  mainImage.src = `./img/${getPicture()}`;
 }
+
+optionsBlock.addEventListener('click', (e) => {
+  if (e.target == option1 || e.target == document.querySelector('.o1')) {
+    console.log('a');
+  } else if (e.target == option2 || e.target == document.querySelector('.o2')) {
+    console.log('b');
+  } else if (e.target == option3 || e.target == document.querySelector('.o3')) {
+    console.log('c');
+  }
+})
 
 
 
