@@ -1,4 +1,4 @@
-const allowedStates = ['health', 'mind', 'sleep', 'bullets'];
+const allowedStates = ['health', 'mind', 'sleep', 'bullets', 'item'];
 
 actionParser = (actionString) => {
     const actions = actionString.split('@');
@@ -17,6 +17,18 @@ actionParser = (actionString) => {
 
         if (!allowedStates.includes(state)) {
             throw new Error(`invalid state '${state}' in '${actionString}'`)
+        }
+
+        if(state === 'item') {
+            if (sign === '+') {
+                add[state] ? add[state].push(valueString) : add[state] = [valueString];
+            } else if (sign === '-') {
+                remove[state] ? remove[state].push(valueString) : remove[state] = [valueString];
+            } else {
+                throw new Error(`invalid action '${action}' in '${actionString}'`);
+            }
+
+            return;
         }
 
         if (sign === '+') {

@@ -39,17 +39,31 @@ describe('actionParser', () => {
 
     describe('actionParser helper carpet testing', () => {
         it.each`
-            actions                       | nextEvent | add                          | remove
-            ${ '12' }                     | ${ 12 }   | ${{}}                        | ${{}}
-            ${ '12@sleep+10' }            | ${ 12 }   | ${{ sleep: 10 }}             | ${{}}
-            ${ '12@sleep+10@health+12' }  | ${ 12 }   | ${{ sleep: 10, health: 12 }} | ${{}}
-            ${ '12@sleep+10@health-23' }  | ${ 12 }   | ${{ sleep: 10 }}             | ${{ health: 23 }}
-            ${ '12@sleep+10@sleep+23' }   | ${ 12 }   | ${{ sleep: 33 }}             | ${{}}
-            ${ '12@sleep+10@sleep-23' }   | ${ 12 }   | ${{ sleep: 10 }}             | ${{ sleep: 23 }}
-            ${ '42@mind+10@bullets-1' }   | ${ 42 }   | ${{ mind: 10 }}              | ${{ bullets: 1 }}
-            ${ '42@bullets-1@bullets-2' } | ${ 42 }   | ${{}}                        | ${{ bullets: 3 }}
+            actions                                           | nextEvent | add                                     | remove
+            ${ '12' }                                         | ${ 12 }   | ${{}}                                   | ${{}}
+            ${ '12@sleep+10' }                                | ${ 12 }   | ${{ sleep: 10 }}                        | ${{}}
+            ${ '12@sleep+10@health+12' }                      | ${ 12 }   | ${{ sleep: 10, health: 12 }}            | ${{}}
+            ${ '12@sleep+10@health-23' }                      | ${ 12 }   | ${{ sleep: 10 }}                        | ${{ health: 23 }}
+            ${ '12@sleep+10@sleep+23' }                       | ${ 12 }   | ${{ sleep: 33 }}                        | ${{}}
+            ${ '12@sleep+10@sleep-23' }                       | ${ 12 }   | ${{ sleep: 10 }}                        | ${{ sleep: 23 }}
+            ${ '42@mind+10@bullets-1' }                       | ${ 42 }   | ${{ mind: 10 }}                         | ${{ bullets: 1 }}
+            ${ '42@bullets-1@bullets-2' }                     | ${ 42 }   | ${{}}                                   | ${{ bullets: 3 }}
+            ${ '42@mind+10@bullets-1@item+key1@item+key2' }   | ${ 42 }   | ${{ mind: 10, item: ['key1', 'key2'] }} | ${{ bullets: 1 }}
+            ${ '42@mind+10@bullets-1@item-key1@item-key2' }   | ${ 42 }   | ${{ mind: 10 }}                         | ${{ bullets: 1, item: ['key1', 'key2'] }}
+            ${ '42@mind+10@bullets-1@item-key1@item+key2' }   | ${ 42 }   | ${{ mind: 10, item: ['key2'] }}         | ${{ bullets: 1, item: ['key1'] }}
+
         `('🐙 actionParser get $actions, returns $nextEvent, $add and $remove', ({ actions, nextEvent, add, remove}) => {
             expect(actionParser(actions)).toEqual({nextEvent, add, remove})
         })
+    });
+
+    describe('🐙 actionParser helper with items', () => {
+        it('should parse add item', () => {
+            expect(actionParser('23@item+key')).toHaveProperty('add', { item: ['key'] })
+        });
+
+        it('should parse remove item', () => {
+            expect(actionParser('23@item-key')).toHaveProperty('remove', { item: ['key'] })
+        });
     });
 });
